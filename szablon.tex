@@ -1,0 +1,47 @@
+% **** Szablon pracy magisterskiej, licencjackiej lub inżynierskiej ****
+
+\documentclass[polish,12pt,twoside,a4paper]{report}
+
+\input{style.tex}
+
+%definicja przydatnych poleceń
+\newcommand{\wydzial}{KOLEGIUM INFORMATYKI STOSOWANEJ}
+\newcommand{\kierunek}{Kierunek: INFORMATYKA}
+\newcommand{\specjalnosc}{Specjalność: Technologie IoT - Internetu Rzeczy (IoT)}
+\newcommand{\autor}{Samir Al-Azazi}
+\newcommand{\album}{w66045}
+\newcommand{\temat}{Serwis do zwiększania jakości zdjęć}
+\newcommand{\promotor}{dr inż. John Doe}
+\newcommand{\typpracy}{PRACA DYPLOMOWA INŻYNIERSKA}
+\newcommand{\miasto}{Rzeszów}
+\newcommand{\rok}{2024}
+
+\begin{document}
+
+% *************** Włączenie definicji pierwszych stron ***************
+\input{front.tex}
+
+
+% *************** Część główna pracy ***************
+\input{wstep.tex}
+\addcontentsline{toc}{chapter}{Wstęp}
+\newpage
+\input{R1.tex}
+\newpage
+
+% *************** Bibliografia ***************
+\begin{thebibliography}{6}
+\addcontentsline{toc}{chapter}{Bibliografia}
+%dodanie wpisu do spisu bibliograficznego
+
+\bibitem{www-1} http://www.potaroo.net/tools/ipv4/ z dnia 8.12.2018
+
+\bibitem{etykieta1}Autorzy1, {\it Tytuł1}, Wydawnictwo1, Miasto1 Rok1.
+\end{thebibliography}
+\newpage
+
+% *************** Zakończenie ***************
+\input{back.tex}
+
+\end{document}
+% *************** Koniec pliku szablon.tex ***************

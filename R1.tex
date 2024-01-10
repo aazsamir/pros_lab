@@ -1,0 +1,64 @@
+\chapter{Dynamiczne zwiększanie jakości zdjęć}
+
+Rozwój technologii sztucznej inteligencji (AI) stanowi fundament dla licznych innowacyjnych rozwiązań w dziedzinie przetwarzania obrazów.
+Jednym z fascynujących obszarów, gdzie potencjał sztucznej inteligencji jest szczególnie widoczny, jest proces dynamicznego zwiększania jakości zdjęć, nazywany również upscalingiem.
+\newline
+Upcaling\footnote{\href{https://en.wikipedia.org/wiki/Image\_scaling}{https://en.wikipedia.org/wiki/Image\_scaling}} to technika, która umożliwia zwiększenie rozdzielczości obrazów, co jest niezwykle istotne w kontekście poprawy detali i jakości wizualnej.
+\newline
+Celem niniejszego projektu jest zastosowanie zaawansowanych algorytmów opartych na sztucznej inteligencji do dynamicznego upscalingu zdjęć.
+\newline
+Zastosowanie technologii opartej na sztucznej inteligencji pozwala na osiągnięcie znacznie lepszych rezultatów względem tradycyjnych rozwiązań, takich jak interpolacja\footnote{\href{https://pl.wikipedia.org/wiki/Interpolacja\_(grafika\_komputerowa)}{https://pl.wikipedia.org/wiki/Interpolacja\_(grafika\_komputerowa)}}.
+\newline
+Projekt zakłada udostępnienie serwisu przy użyciu serwisu HTTP, który przyjmuje adres do zdjęcia, a następnie zwraca obraz w poprawionej jakości, oraz zadanej rozdzielczości.
+\newline
+Przeanalizujemy również już istniejące rozwiązania na rynku.
+
+\chapter{Analiza rynku}
+
+Stosując analizę wyników wyszukiwania popularnych wyszukiwarek (Google, DuckDuckGo, Bing), odnajdujemy wiele powtarzających się rozwiązań.
+\newline
+Powtarzające się wyniki we wszystkich wymienionych wyszukiwarkach to:
+\begin{itemize}
+	\item \href{https://www.upscale.media/}{upscale}
+	\item \href{https://upscales.ai/}{upscales}
+	\item \href{https://www.pixelcut.ai/image-upscaler}{image-upscaler}
+	\item \href{https://www.iloveimg.com/upscale-image}{upscale-image}
+\end{itemize}
+
+Wszystkie powyższe rozwiązania dostarczają interfejs graficzny, który umożliwia użytkownikowi przesłanie zdjęcia, a następnie otrzymanie obrazu w wyższej jakości.
+\newline
+Wymagają również subskrypcji, w celu uzyskania dostępu do lepszej jakości, lub możliwości przetwarzania większej ilości zdjęć.
+\begin{itemize}
+	\item \href{https://www.upscale.media/pricing}{https://www.upscale.media/pricing}
+\end{itemize}
+\begin{center}
+	{\includegraphics[width=13.0cm, height=3.0cm]{figures/upscale}}
+\end{center}
+
+\chapter{Analiza zapotrzebowania}
+
+Bazując na formie użycia obrazów na serwisach internetowych, wymagane jest rozwiązanie, które umożliwi dynamiczne zwiększanie jakości obrazów, bez konieczności manualnej interakcji dewelopera z serwisem do zwiększenia jakości zdjęć.
+\newline
+Aby to osiągnąć, zostanie zaimplementowany serwis, który udostępnia interfejs HTTP, przyjmujący adres zdjęcia, które ma zostać przetworzone, oraz parametry, określające rozdzielczość wynikową.
+\newline
+Pozwali to na łatwą migrację istniejących serwisów, oraz bezobsługowe działanie.
+
+\chapter{Założenia teoretyczne}
+
+Interfejs serwisu do zwiększania jakości zdjęć, powinien akceptować adres zdjęcia, oraz rozdzielczość wynikową.
+\newline
+Gdy strona internetowa wyświetla obraz, który ma zostać wyświetlony w przeglądarce internetowej, do kodu HTML strony internetowej dodany jest atrybut
+\newline
+\begin{verbatim}
+	<img src="https://ftp.pl/images/1.jpg" />
+\end{verbatim}
+
+Wskazuje on na obraz znajdujący się na serwerze \textit{ftp.pl}, pod adresem \textit{https://ftp.pl/images/1.jpg}.
+\newline
+Zakładając, że serwis jest dostępny pod adresem \textit{htttp://serwis.org/}, a zdjęcie, które ma zostać przetworzone znajduje się pod adresem \textit{https://ftp.pl/images/1.jpg}, to adres zwracający obraz w rozdzielczości \textit{1920x1080} to
+\newline
+\begin{verbatim}
+	http://serwis.org/api/1920x1080/ftp.pl/images/1.jpg
+\end{verbatim}
+
+% ********** Koniec rozdziału **********
