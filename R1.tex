@@ -31,9 +31,12 @@ Wymagają również subskrypcji, w celu uzyskania dostępu do lepszej jakości, 
 \begin{itemize}
 	\item \href{https://www.upscale.media/pricing}{https://www.upscale.media/pricing}
 \end{itemize}
-\begin{center}
-	{\includegraphics[width=13.0cm, height=3.0cm]{figures/upscale}}
-\end{center}
+\begin{figure}
+	\center
+	\includegraphics[width=13.0cm, height=3.0cm]{figures/upscale}
+	\caption{Interfejs użytkownika serwisu upscale-image}
+	\href{https://www.iloveimg.com/upscale-image}{https://www.iloveimg.com/upscale-image}
+\end{figure}
 
 \chapter{Analiza zapotrzebowania}
 
@@ -45,9 +48,11 @@ Pozwali to na łatwą migrację istniejących serwisów, oraz bezobsługowe dzia
 
 \chapter{Założenia teoretyczne}
 
+\section{Zasada działania}
+
 Interfejs serwisu do zwiększania jakości zdjęć, powinien akceptować adres zdjęcia, oraz rozdzielczość wynikową.
 \newline
-Gdy strona internetowa wyświetla obraz, który ma zostać wyświetlony w przeglądarce internetowej, do kodu HTML strony internetowej dodany jest atrybut
+Gdy strona internetowa wyświetla obraz, który ma zostać wyświetlony w przeglądarce internetowej, do kodu HTML strony internetowej dodany jest atrybut {\it src}
 \newline
 \begin{verbatim}
 	<img src="https://ftp.pl/images/1.jpg" />
@@ -60,5 +65,46 @@ Zakładając, że serwis jest dostępny pod adresem \textit{htttp://serwis.org/}
 \begin{verbatim}
 	http://serwis.org/api/1920x1080/ftp.pl/images/1.jpg
 \end{verbatim}
+
+\clearpage
+\section{Ścieżka działania}
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{p{0.25\linewidth} | p{0.7\linewidth}}
+        \hline
+        \textbf{Krok} & \textbf{Opis} \\
+		\hline
+		Załadowanie strony &
+		Przeglądarka internetowa pobiera stronę internetową, razem z znacznikami wskazującymi na adresy obrazów. \\
+		\hline
+		Żądanie HTTP &
+		Przeglądarka internetowa po załadowaniu strony internetowej, wysyła żądanie HTTP do serwera, w celu pobrania obrazu. \\
+		\hline
+		Parsowanie adresu &
+		Aplikacja serwerowa parsuje adres, w celu odczytania adresu obrazu, oraz rozdzielczości, w której ma zostać zwrócony obraz. \\
+		\hline
+		Weryfikacja uprawnień &
+		Aplikacja serwerowa weryfikuje po nagłówkach żądania HTTP, czy zostało ono wysłane z strony internetowej, która ma dostęp do serwisu, oraz czy obraz znajduje się na liście zaufanych serwerów. \\
+		\hline
+		Odpytanie pamięci podręcznej &
+		Aplikacja serwerowa sprawdza, czy żądany obraz, w żądanej rozdzielczości został już przetworzony i znajduje się w pamięci podręcznej.
+		Jeśli tak, to aplikacja serwerowa zwraca obraz i kończy działanie. \\
+		\hline
+		Pobranie obrazu &
+		Aplikacja serwerowa pobiera obraz z serwera, pod adresem wskazanym w żądaniu HTTP.
+		Jeśli obraz nie istnieje, to aplikacja odpowiada kodem statusu HTTP 404. \\
+		\hline
+		Przetworzenie obrazu &
+		Aplikacja serwerowa przetwarza obraz \\
+		\hline
+		Zapisanie obrazu &
+		Wynik jest zapisany do pamięci podręcznej, by nie powtarzać operacji przetwarzania obrazu przy ponownym żądaniu. \\
+		\hline
+		Zwrócenie obrazu &
+		Aplikacja serwerowa zwraca obraz w żądanej rozdzielczości, wraz z kodem statusu HTTP 200. \\
+		\hline
+	\end{tabular}
+\end{table}
 
 % ********** Koniec rozdziału **********

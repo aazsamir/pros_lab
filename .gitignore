@@ -3,3 +3,6 @@
 *.tcp
 *.eps
 *.gz
+*.log
+*.out
+*.aux
